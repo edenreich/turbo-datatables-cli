@@ -1,7 +1,9 @@
-import { Argv } from "yargs";
+import { Argv } from 'yargs';
+import { setup } from '../database/setup';
 
 declare interface Options {
-    records?: number
+    records: number,
+    table: string
 }
 
 export class seedCommand
@@ -21,6 +23,6 @@ export class seedCommand
     
     public static handle(argv: Options): void 
     {
-        throw new Error("Method not implemented.");
+        setup(argv.table, argv.records);
     }
 }
