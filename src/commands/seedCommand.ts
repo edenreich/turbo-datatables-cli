@@ -23,6 +23,8 @@ export class seedCommand
     
     public static handle(argv: Options): void 
     {
-        setup(argv.table, argv.records);
+        setup(argv.table, argv.records).then(() => {
+            console.log(`${(new Date).toLocaleTimeString()}: Seeding table ${argv.table} with ${argv.records} records was completed!`);
+        }).catch(err => console.log(err));
     }
 }

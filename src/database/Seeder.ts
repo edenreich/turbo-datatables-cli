@@ -1,4 +1,4 @@
-const faker = require('Faker'); 
+import * as faker from 'faker';
 import { Database } from './Database';
 
 export class Seeder
@@ -26,7 +26,7 @@ export class Seeder
         );`);
     }
 
-    public async seed()
+    public async seed(): Promise<any>
     {
         this.db.query(`TRUNCATE TABLE ${this.tableName};`);
 
