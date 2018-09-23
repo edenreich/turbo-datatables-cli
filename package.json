@@ -5,8 +5,7 @@
   "bin": "bin/cli.js",
   "scripts": {
     "dist": "tsc",
-    "dist-watch": "tsc --watch",
-    "start-server": "ts-node --compiler typescript src/server.ts"
+    "dist-watch": "tsc --watch"
   },
   "keywords": [
     "datatables",

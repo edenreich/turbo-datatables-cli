@@ -27,7 +27,6 @@ export class serveCommand
     public static handle(argv: Options): void
     {
         const npm = (process.platform === "win32" ? "npm.cmd" : "npm")
-        const command = spawn(npm, ['run', 'start-server']);
         
         const app: Koa = new Koa;
         const router: Router = new Router;
@@ -38,7 +37,7 @@ export class serveCommand
             
             const inputs = ctx.request.query;
             const dt = await Datatables();
-            
+
             dt.of('test_users').only(['id', 'email']);
             dt.setInputs(inputs);
         
@@ -50,13 +49,5 @@ export class serveCommand
 
 
         console.log(`server is running on http://localhost:${argv.port}`);
-        
-        command.stdout.on('data', function (data: any) {
-            console.log(data.toString());
-        });
-        
-        command.stderr.on('data', function (data: any) {
-            console.error(data.toString());
-        });
     }
 }
