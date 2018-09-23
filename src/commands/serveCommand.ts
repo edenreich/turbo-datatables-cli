@@ -25,9 +25,7 @@ export class serveCommand
     }
 
     public static handle(argv: Options): void
-    {
-        const npm = (process.platform === "win32" ? "npm.cmd" : "npm")
-        
+    {   
         const app: Koa = new Koa;
         const router: Router = new Router;
 
@@ -46,7 +44,6 @@ export class serveCommand
 
         app.use(router.routes());
         app.listen(argv.port);
-
 
         console.log(`server is running on http://localhost:${argv.port}`);
     }
