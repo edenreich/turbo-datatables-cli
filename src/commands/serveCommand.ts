@@ -4,8 +4,9 @@ import * as Router from 'koa-router';
 import { Datatables } from 'turbo-datatables-response';
 
 declare interface Options {
-    port?: number,
-    url?: string
+    port: number,
+    url: string,
+    table: string
 }
 
 export class serveCommand
@@ -20,6 +21,10 @@ export class serveCommand
             alias: 'u',
             describe: 'Url for fetching the data',
             default: 'users'
+        }).option('table', {
+            alias: 't',
+            describe: 'The table to fetch the records from',
+            default: 'test_users'
         });
     }
 
@@ -35,7 +40,7 @@ export class serveCommand
             const inputs = ctx.request.query;
             const dt = await Datatables();
 
-            dt.of('test_users').only(['id', 'email']);
+            dt.of(`${argv.table}`).only(['id', 'email']);
             dt.setInputs(inputs);
         
             ctx.body = await dt.make();
