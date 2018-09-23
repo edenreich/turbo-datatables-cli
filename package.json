@@ -1,0 +1,33 @@
+{
+  "name": "turbo-datatables-cli",
+  "version": "1.0.0",
+  "description": "A Commandline client for turbo-datatables",
+  "bin": "bin/cli.js",
+  "scripts": {
+    "dist": "tsc",
+    "dist-watch": "tsc --watch",
+    "start-server": "ts-node --compiler typescript src/server.ts"
+  },
+  "keywords": [
+    "datatables",
+    "datatables cli"
+  ],
+  "author": "Eden Reich <eden.reich@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/koa": "^2.0.46",
+    "@types/koa-router": "^7.0.32",
+    "@types/mysql": "^2.15.5",
+    "@types/node": "^10.10.3",
+    "@types/yargs": "^12.0.0",
+    "koa": "^2.5.3",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.16.0",
+    "ts-node": "^7.0.1",
+    "turbo-datatables-response": "^1.0.4",
+    "typescript": "^3.0.3"
+  },
+  "dependencies": {
+    "yargs": "^12.0.2"
+  }
+}
