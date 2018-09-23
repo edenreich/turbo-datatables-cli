@@ -14,11 +14,13 @@
   "author": "Eden Reich <eden.reich@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/faker": "^4.1.4",
     "@types/koa": "^2.0.46",
     "@types/koa-router": "^7.0.32",
     "@types/mysql": "^2.15.5",
     "@types/node": "^10.10.3",
     "@types/yargs": "^12.0.0",
+    "faker": "^4.1.0",
     "koa": "^2.5.3",
     "koa-router": "^7.4.0",
     "mysql": "^2.16.0",
