@@ -2,7 +2,7 @@
   "name": "turbo-datatables-cli",
   "version": "1.0.0",
   "description": "A Commandline interface for turbo-datatables",
-  "bin": "bin/cli.js",
+  "bin": "dist/bin/cli.js",
   "scripts": {
     "dist": "tsc",
     "dist-watch": "tsc --watch"
