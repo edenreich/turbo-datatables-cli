@@ -1,9 +1,12 @@
 import { Argv } from 'yargs';
 import { spawn } from 'child_process';
-import { app } from '../server';
+import * as Koa from 'koa';
+import * as Router from 'koa-router';
+import { Datatables } from 'turbo-datatables-response';
 
 declare interface Options {
-    port?: number
+    port?: number,
+    url?: string
 }
 
 export class serveCommand
@@ -12,11 +15,12 @@ export class serveCommand
     {
         return argv.option('port', {
             alias: 'p',
-            describe: "Port to bind on",
-            default: "3000"
-        }).option('verbose', {
-            alias: 'v',
-            default: false
+            describe: 'Port to bind on',
+            default: '3000'
+        }).option('url', {
+            alias: 'u',
+            describe: 'Url for fetching the data',
+            default: 'users'
         });
     }
 
@@ -24,8 +28,26 @@ export class serveCommand
     {
         const npm = (process.platform === "win32" ? "npm.cmd" : "npm")
         const command = spawn(npm, ['run', 'start-server']);
+        
+        const app: Koa = new Koa;
+        const router: Router = new Router;
 
+        router.get(`/${argv.url}`, async (ctx: any, next: any): Promise<any> => {
+            // Allow access from webpack-dev-server.
+            ctx.set('Access-Control-Allow-Origin', 'http://localhost:8080');
+            
+            const inputs = ctx.request.query;
+            const dt = await Datatables();
+            
+            dt.of('test_users').only(['id', 'email']);
+            dt.setInputs(inputs);
+        
+            ctx.body = await dt.make();
+        });
+
+        app.use(router.routes());
         app.listen(argv.port);
+
 
         console.log(`server is running on http://localhost:${argv.port}`);
         
