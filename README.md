@@ -11,6 +11,14 @@
 
 
 ## Testing
+First you must set environment variables with the database connection:
+```sh
+export TEST_DB_HOST=root
+export TEST_DB_USER=root
+export TEST_DB_PASSWORD=
+export TEST_DB_DATABASE=test_database
+```
+
 To create a demo table and seed some fake data into it:
 ```sh
 datatables seed --table users --records 5000
