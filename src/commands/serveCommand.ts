@@ -35,7 +35,7 @@ export class serveCommand
 
         router.get(`/${argv.url}`, async (ctx: any, next: any): Promise<any> => {
             // Allow access from webpack-dev-server.
-            ctx.set('Access-Control-Allow-Origin', 'http://localhost:*');
+            ctx.set('Access-Control-Allow-Origin', '*');
             
             const inputs = ctx.request.query;
             const dt = await Datatables();
