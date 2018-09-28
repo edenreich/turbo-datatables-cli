@@ -1,6 +1,6 @@
 {
   "name": "turbo-datatables-cli",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A Commandline interface for turbo-datatables",
   "bin": {
     "datatables": "dist/bin/cli.js"
